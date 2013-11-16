@@ -1,0 +1,14 @@
+/*
+ Theme Name:     Kryss
+ Theme URI:      https://github.com/brstp/kryss
+ Description:    Wordpress theme for Svenska Kryssarklubben, a child theme of Responsive.
+ Author:         Stefan Pettersson
+ Author URI:     http://lumano.se
+ Template:       responsive
+ Version:        0.1
+*/
+
+@import url("../responsive/style.css");
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
