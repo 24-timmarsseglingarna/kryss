@@ -12,3 +12,312 @@
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */
+
+
+body {
+  background-color: d0e6f3;
+}
+
+#wrapper a, #wrapper a:hover, #wrapper  a:active, #wrapper a:link, #wrapper  a:visited 
+ {
+  color:  #003882;
+}
+
+#wrapper h1 a, #wrapper h1 a:link, #wrapper h1 a:visited,  #wrapper h1 a:hover, #wrapper h1 a:active,
+#wrapper h2 a, #wrapper h2 a:link, #wrapper h2 a:visited,  #wrapper h2 a:hover, #wrapper h2 a:active ,
+#wrapper h3 a, #wrapper h3 a:link, #wrapper h3 a:visited,  #wrapper h3 a:hover, #wrapper h3 a:active {
+  color: #555;
+}
+
+
+.commentlist li {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+
+.top-widget {
+  padding-right: 1.5em;
+}
+
+.wp-caption {
+  text-align: inherit;
+  text-transform: uppercase;
+  color: #000;
+  background: inherit;
+  border: none;
+  max-width: 100%;
+  padding: 0px;
+}
+
+.wp-caption.alignnone {
+  width: 633px !important;
+}
+
+.comments-link {
+  background-color: #D0E6F3;
+}
+
+.mdash {
+ display: none;
+}
+
+.wp-caption p.wp-caption-text {
+  margin: 1em 0 0 0;
+  padding: 0.333em 0;
+  border-top: dotted 1px #555;
+  border-bottom: dotted 1px #555;
+}
+
+.wp-caption img {
+  max-width: 100%;
+}
+#header {
+  background-color: #fff;
+  margin-top: 1.5em;
+  padding: 1.5em 0em 2em 0em; 
+}
+
+#wrapper {
+  background-color: #d0e6f3;
+  border: none;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+#content-blog, #widgets, #content {
+  margin-top: 0px;
+}
+
+
+h1, h2, h3, h3 {
+  font-family:"Times New Roman",Georgia,Serif;
+}
+
+.more-link {
+  font-weight: bold;
+}
+
+#wrapper h3 {
+	font-size: 1.5em; /* = 24px */
+}
+
+/*
+#widgets a, #widgets a:hover, #widgets a:active, #widgets a:link, #widgets a:visited .post a, .post a:hover, .post a:active, .post a:link, .post a:visited, .page a, .page a:hover, .page a:active, .page a:link, .page a:visited
+ {
+  color: #003882;
+}
+*/
+
+#widgets a:hover, #widgets a:active, .post a:hover, .post a:active {
+  text-decoration: underline;
+}
+
+.widget-wrapper {
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border: none;
+  border-radius: 0px;
+  border-top: 3px solid #F7DB16;
+  padding: 10px;
+}
+
+
+.widget-wrapper ul {
+  margin-bottom: 0px;
+}
+
+#footer, #footer a {
+  font-weight: inherit;
+  color: inherit;
+}
+
+#footer_widget {
+  border-bottom: 1px dotted #000;
+}
+
+@media screen and (min-width: 650px) {
+  #footer_image {
+    background-image:url('http://www.sxk.se/sites/all/themes/sxk/images/bottom.jpg');
+    background-repeat:no-repeat;
+    background-position:center bottom; 
+    background-size:100%;
+    min-height: 300px;
+    height: 350px;
+    width: 100%;
+    margin-bottom: -18px
+  }
+}
+.post, .archive-post-header, .search-post-header, .page {
+  background-color: #fff;
+  margin: 0px 0px 1em 0px;
+  padding: 1.5em 1.5em 0.25em 1.5em;
+}
+
+
+#content {
+  background-color: #fff;
+}
+
+.archive-post-header, .search-post-header {
+  border-top: 3px solid #000;
+}
+
+.archive-post-header h6, .search-post-header h6 {
+  margin: inherit;
+}
+
+#content-archive, #content-search {
+  margin-top: 0;
+}
+
+ #respond {
+  background-color: #fff;
+  margin: 0px 0px 12px 0px;
+  padding: 18px;
+  background-image: none;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border: none;
+  border-radius: 0px;
+}
+
+#comments {
+  padding: 0 1.5em;
+}
+
+.commentlist {
+  margin: 0 1.5em
+}
+
+.post-title {
+  margin-top: 0px;
+}
+
+ 
+
+a.button, input[type='reset'], input[type='button'], input[type='submit'] {
+  font-family: Arial;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: none;
+  background: #3666a4; /* Old browsers */
+  background: -moz-linear-gradient(top,  #3666a4 0%, #003882 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#3666a4), color-stop(100%,#003882)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #3666a4 0%,#003882 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #3666a4 0%,#003882 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #3666a4 0%,#003882 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #3666a4 0%,#003882 100%); /* W3C */
+}
+
+.menu, .menu ul {
+  float: right;
+}
+
+.menu {
+  background-color: #fff;
+  background-image:none;
+ margin-bottom: 1.5em;
+ margin-right: 1em;
+}
+
+.menu a {
+  border-left: none;
+  color: #000;
+  font-weight: 100;
+  height: 1.2em;
+  line-height: 1.2em;
+  padding: 0 0.25em;
+  margin: 0 0.25em;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.menu .current_page_item a, .menu .current-menu-item a  {
+  background-color: #fff;
+  border-bottom: solid 0.33em #000;
+}
+
+.sub-menu .current_page_item a, .sub-menu .current-menu-item a, .menu li li a  {
+background-color: #fff;
+border-bottom: solid 0.33em #fff;
+}
+
+
+.top-menu a:hover {
+  text-decoration: underline;
+}
+
+.top-menu {
+  padding-right: 1.5em;
+}
+
+.menu a:hover {
+	background-color: #fff;
+	background-image: none;
+	color: #000;
+        border-bottom: solid 0.33em #000;
+}
+
+ul.menu > li:hover {
+	background-color: #fff;
+	color: #000;
+}
+
+
+.js .main-nav #responsive_current_menu_item {
+  margin-top: 1em;
+}
+
+.js .main-nav {
+  /*margin-bottom: -4em;*/
+}
+
+.current-page-ancestor  a {
+  background-color: #fff;
+  border-bottom: solid 0.33em #000;
+}
+
+#subnav .current_page_item a
+{
+ /* background-color: #fff;
+  border-bottom: solid 0.33em #000; */
+}
+
+#fb-root {
+    display: none;
+}
+
+.fb_iframe_widget, .fb_iframe_widget span, .fb_iframe_widget span iframe[style] {
+    width: 100% !important;
+}
+
+.fb-like {
+  min-height: 35px;
+}
+
+.widget-title h3, .widget-title h3 a {
+  font-weight: bold;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px dotted #C6C6C6;
+  text-decoration: none;
+  color: #555;
+}
+
+
+@media screen and (max-width: 650px) {
+  #header {
+    padding: 0;
+  }
+  #logo img {
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+  }
+}
