@@ -143,7 +143,7 @@ h1, h2, h3, h3 {
 
 @media screen and (min-width: 650px) {
   #footer_image {
-    background-image:url('http://www.sxk.se/sites/all/themes/sxk/images/bottom.jpg');
+    background-image:url('/wp-content/themes/kryss/images/bottom.jpg');
     background-repeat:no-repeat;
     background-position:center bottom; 
     background-size:100%;
