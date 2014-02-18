@@ -19,7 +19,14 @@ if( !defined( 'ABSPATH' ) ) {
  * @since          available since Release 1.0
  */
 ?>
+<?php if( get_post_type( $post ) == 'kryss_result' ): ?>
+  <div class = "post-type" >Resultat</div>
+<?php endif; ?>
 
+<?php if( get_post_type( $post ) == 'kryss_race' ): ?>
+  <div class = "post-type" >Segling</div>
+<?php endif; ?>
+    
 <?php if( is_single() ): ?>
 	<h1 class="entry-title post-title"><?php the_title(); ?></h1>
 <?php else: ?>

@@ -30,7 +30,16 @@ if( 'full-width-page' == responsive_get_layout() ) {
 
 <?php responsive_widgets_before(); // above widgets container hook ?>
 
+    
 	<div id="widgets" class="<?php echo implode( ' ', responsive_get_sidebar_classes() ); ?>">
+	  
+	  <?php responsive_widgets(); // above widgets hook ?>
+	  
+	
+		<?php if ( dynamic_sidebar('kryss_top_right') ) : ?>
+		<? endif; ?>
+
+
 
 
   <?php if( is_page() ) : ?>
@@ -69,19 +78,131 @@ if( 'full-width-page' == responsive_get_layout() ) {
 
 	<?php endif; //end of is_page ?>
 
+  
+	  <?php
+	    if ( is_single() or is_page() ){
+        $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
+        if ( !empty($organizers) ) {
+          foreach( $organizers as $organizer) { 
+           	echo '<div class="widget-wrapper">';
+  		      echo '<div class="widget-title"><h3>Seglingar i ' .  $organizer->name . '</h3></div>';
+  		      echo '<ul>';
+            $args = array(
+            	'post_type' => 'kryss_race',
+              'kryss_organizer_tax' => $organizer->slug,
+              'posts_per_page' => 5
+            );
+            $the_query = new WP_Query( $args ); 
+            if ( $the_query->have_posts() ) {
+              while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <li><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></li> 
+              <?php
+              endwhile;  
+              wp_reset_postdata();
+            }
+            ?>
+            </ul>
+            <a href ="<?php echo get_post_type_archive_link('kryss_race') . '?kryss_organizer_tax=' . $organizer->slug; ?>">Alla i <?php echo $organizer->name; ?> ...</a>
+            </div>
+            <?php
+          }
+        }
+      }
+    else   {
+     	echo '<div class="widget-wrapper">';
+      echo '<div class="widget-title"><h3>Seglingar </h3></div>';
+      echo '<ul>';
+      $args = array(
+      	'post_type' => 'kryss_race',
+        'posts_per_page' => 10
+      );
+      $the_query = new WP_Query( $args ); 
+      if ( $the_query->have_posts() ) {
+        while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+          <li><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></li> 
+        <?php
+        endwhile;  
+        wp_reset_postdata();
+      }
+      ?>
+      </ul>
+      <a href ="<?php echo get_post_type_archive_link('kryss_race') ?>">Alla seglingar ...</a>
+      </div>
+      <?php
+    }
+?>
 
-		<?php responsive_widgets(); // above widgets hook ?>
+	  <?php
+	    if ( is_single() or is_page() ){
+        $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
+        if ( !empty($organizers) ) {
+          foreach( $organizers as $organizer) { 
+           	echo '<div class="widget-wrapper">';
+  		      echo '<div class="widget-title"><h3>Resultat från ' .  $organizer->name . '</h3></div>';
+  		      echo '<ul>';
+            $args = array(
+            	'post_type' => 'kryss_result',
+              'kryss_organizer_tax' => $organizer->slug,
+              'posts_per_page' => 5
+            );
+            $the_query = new WP_Query( $args ); 
+            if ( $the_query->have_posts() ) {
+              while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <li><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></li> 
+              <?php
+              endwhile;  
+              wp_reset_postdata();
+            }
+            ?>
+            </ul>
+            <a href ="<?php echo get_post_type_archive_link('kryss_result') . '?kryss_organizer_tax=' . $organizer->slug; ?>">Alla i <?php echo $organizer->name; ?> ...</a>
+            </div>
+            <?php
+          }
+        }
+      }
+?>
 
-		<?php if( !dynamic_sidebar( 'main-sidebar' ) ) : ?>
-			<div class="widget-wrapper">
 
-				<div class="widget-title"><h3><?php _e( 'In Archive', 'responsive' ); ?></h3></div>
-				<ul>
-					<?php wp_get_archives( array( 'type' => 'monthly' ) ); ?>
-				</ul>
+	  <?php
+	    if ( is_single() or is_page() ){
+        $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
+        if ( !empty($organizers) ) {
+          foreach( $organizers as $organizer) { 
+           	echo '<div class="widget-wrapper">';
+  		      echo '<div class="widget-title"><h3>Artiklar från ' .  $organizer->name . '</h3></div>';
+  		      echo '<ul>';
+            $args = array(
+            	'post_type' => 'post',
+              'kryss_organizer_tax' => $organizer->slug,
+              'posts_per_page' => 5
+            );
+            $the_query = new WP_Query( $args ); 
+            if ( $the_query->have_posts() ) {
+              while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
+                <li><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></li> 
+              <?php
+              endwhile;  
+              wp_reset_postdata();
+            }
+            ?>
+            </ul>
+            
+            <?php $term_link = get_term_link($organizer, 'kryss_organizer_tax');
+            if( is_wp_error( $term_link ) )
+              continue; ?>
+            <a href ="<?php echo $term_link . '?post_type=post' ?>">Alla från <?php echo $organizer->name; ?> ...</a>
+            
+            </div>
+            <?php
+          }
+        }
+      }
+?>
 
-			</div><!-- end of .widget-wrapper -->
-		<?php endif; //end of main-sidebar ?>
+<?php if( !dynamic_sidebar( 'main-sidebar')): ?>
+<? endif; ?>
+
 
 		<?php responsive_widgets_end(); // after widgets hook ?>
 	</div><!-- end of #widgets -->

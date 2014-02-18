@@ -5,7 +5,7 @@
  Author:         Stefan Pettersson
  Author URI:     http://lumano.se
  Template:       responsive
- Version:        0.1
+ Version:        0.2
 */
 
 @import url("../responsive/style.css");
@@ -18,17 +18,30 @@ body {
   background-color: #d0e6f3;
 }
 
-#wrapper a, #wrapper a:hover, #wrapper  a:active, #wrapper a:link, #wrapper  a:visited 
- {
-  color:  #003882;
-}
+
 
 #wrapper h1 a, #wrapper h1 a:link, #wrapper h1 a:visited,  #wrapper h1 a:hover, #wrapper h1 a:active,
 #wrapper h2 a, #wrapper h2 a:link, #wrapper h2 a:visited,  #wrapper h2 a:hover, #wrapper h2 a:active ,
 #wrapper h3 a, #wrapper h3 a:link, #wrapper h3 a:visited,  #wrapper h3 a:hover, #wrapper h3 a:active {
   color: #555;
+  text-decoration: none;
 }
 
+#wrapper a, #wrapper a:hover, #wrapper a:active, #wrapper a:link, #wrapper a:visited,
+#footer_widget a, #footer_widget a:hover, #footer_widget a:active, #footer_widget a:link, #footer_widget a:visited 
+ {
+  color:  #003882;
+  text-decoration: underline;
+}
+
+#footer_widget {
+  font-size: 1.5em;
+}
+
+#footer_widget li {
+  line-height: 1.25;
+  padding-bottom: 0.25em;
+}
 
 .commentlist li {
   -webkit-border-radius: 0;
@@ -39,6 +52,8 @@ body {
 .top-widget {
   padding-right: 1.5em;
 }
+
+
 
 .wp-caption {
   text-align: inherit;
@@ -58,8 +73,16 @@ body {
   background-color: #D0E6F3;
 }
 
+.page comments-link {
+  display: none;
+}
+
 .mdash {
  display: none;
+}
+
+.kryss_race .navigation, .kryss_result .navigation {
+  display: none;
 }
 
 .wp-caption p.wp-caption-text {
@@ -103,6 +126,10 @@ h1, h2, h3, h3 {
   font-weight: bold;
 }
 
+p strong a {
+  font-weight: bold;
+}
+
 #wrapper h3 {
 	font-size: 1.5em; /* = 24px */
 }
@@ -114,9 +141,6 @@ h1, h2, h3, h3 {
 }
 */
 
-#widgets a:hover, #widgets a:active, .post a:hover, .post a:active {
-  text-decoration: underline;
-}
 
 .widget-wrapper {
   -webkit-border-radius: 0px;
@@ -153,7 +177,7 @@ h1, h2, h3, h3 {
     margin-bottom: -18px
   }
 }
-.post, .archive-post-header, .search-post-header, .page {
+.archive-post-header, .search-post-header, .hentry {
   background-color: #fff;
   margin: 0px 0px 1em 0px;
   padding: 1.5em 1.5em 0.25em 1.5em;
@@ -302,6 +326,14 @@ ul.menu > li:hover {
   min-height: 35px;
 }
 
+#footer .social-icons {
+  margin-top: 1em;
+}
+
+.kryss_race #author-meta, .kryss_result #author-meta {
+  display: none;
+}
+
 .widget-title h3, .widget-title h3 a {
   font-weight: bold;
   padding-bottom: 5px;
@@ -309,6 +341,14 @@ ul.menu > li:hover {
   border-bottom: 1px dotted #C6C6C6;
   text-decoration: none;
   color: #555;
+}
+
+.top-widget .widget-title h3  {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  border: none;
+  font-size: 1.5em;
+  color: #000;
 }
 
 
