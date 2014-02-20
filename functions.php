@@ -1,5 +1,8 @@
 <?php //Opening PHP tag
 
+add_filter('wp_feed_cache_transient_lifetime',create_function('$a', 'return 1200;')); // Speed upp retrieval of rss feed to widget 20 mins.
+
+
 add_action( 'init', 'create_post_types' );
 
 function create_post_types() {
