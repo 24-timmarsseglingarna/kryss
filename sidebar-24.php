@@ -6,18 +6,18 @@ if( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main Widget Template
+ * 24 hrs rally sidebar
  *
  *
- * @file           sidebar.php
- * @package        Responsive
- * @author         Emil Uzelac
- * @copyright      2003 - 2013 ThemeID
+ * @file           sidebar-24.php
+ * @package        kryss
+ * @author         Stefan Pettersson
+ * @copyright      2014 Lumano
  * @license        license.txt
  * @version        Release: 1.0
- * @filesource     wp-content/themes/responsive/sidebar.php
+ * @filesource     wp-content/themes/kryss/sidebar-24.php
  * @link           http://codex.wordpress.org/Theme_Development#Widgets_.28sidebar.php.29
- * @since          available since Release 1.0
+ * @since          available since Release 0.2.2
  */
 
 /*
