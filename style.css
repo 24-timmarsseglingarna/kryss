@@ -351,6 +351,13 @@ ul.menu > li:hover {
   color: #000;
 }
 
+#footer_widget  {
+  font-size: 14px; 
+}
+
+td {
+padding: 0.1em .8em;
+}
 
 @media screen and (max-width: 650px) {
   #header {
