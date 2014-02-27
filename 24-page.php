@@ -8,8 +8,9 @@ if( !defined( 'ABSPATH' ) ) {
 /**
  * Pages Template
  *
- *
- * @file           page.php
+ * Template Name:  24-timmars
+ * Description:    En mall med specialfunktioner för arrangörer.
+ * @file           24-page.php
  * @package        Responsive
  * @author         Emil Uzelac
  * @copyright      2003 - 2014 CyberChimps
@@ -49,7 +50,7 @@ get_header(); ?>
 			<?php responsive_entry_after(); ?>
 
 			<?php responsive_comments_before(); ?>
-			<?php // comments_template( '', true ); ?>
+			<?php //comments_template( '', true ); ?>
 			<?php responsive_comments_after(); ?>
 
 		<?php
@@ -66,5 +67,5 @@ get_header(); ?>
 
 </div><!-- end of #content -->
 
-<?php get_sidebar(); ?>
+<?php get_sidebar('24'); ?>
 <?php get_footer(); ?>

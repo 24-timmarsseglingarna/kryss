@@ -5,6 +5,8 @@ if( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+
+
 /**
  * 24 hrs rally sidebar
  *
@@ -38,9 +40,6 @@ if( 'full-width-page' == responsive_get_layout() ) {
 	
 		<?php if ( dynamic_sidebar('kryss_top_right') ) : ?>
 		<? endif; ?>
-
-
-
 
   <?php if( is_page() ) : ?>
 
@@ -200,9 +199,57 @@ if( 'full-width-page' == responsive_get_layout() ) {
       }
 ?>
 
-<?php if( !dynamic_sidebar( 'main-sidebar')): ?>
-<? endif; ?>
+  <?php
+    $organizer_feed = '';
+    $fb_page = 'https://www.facebook.com/svenskakryssarklubben';
+    $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
+    if ( !empty($organizers) ){
+      if ( function_exists('get_all_terms_meta') ) {
+        $metaList = get_all_terms_meta( '26' );
+        if ( !empty( $metaList ) ) { 
+          if ( !empty( $metaList['kryss_organizer_fbpage'][0]) ) {
+            $fb_page = $metaList['kryss_organizer_fbpage'][0];  
+          }
+          if ( !empty( $metaList['kryss_organizer_feed'][0] ) ) {
+            $organizer_feed = $metaList['kryss_organizer_feed'][0];
+          }
+        }
+      }
+    }
+  ?>
 
+
+	<div class="widget-wrapper">
+    <div class="fb-like-box" data-href="<?php echo $fb_page; ?>" data-width="300" data-height="400" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+  </div>
+
+  <?php 
+    if( !empty( $organizer_feed ))  {
+      include_once( ABSPATH . WPINC . '/feed.php' );    
+      $rss = fetch_feed( $organizer_feed );
+      if ( ! is_wp_error( $rss ) ) { 
+        $maxitems = $rss->get_item_quantity( 7 ); 
+        $rss_items = $rss->get_items( 0, $maxitems );
+        }
+      }
+  ?>
+      
+  <?php if ( $maxitems > 0 ) : ?>
+    <div class="widget-wrapper">
+      <div class="widget-title"><h3>Från <?php echo $organizer->name; ?></h3></div>
+      <ul>
+      <?php foreach ( $rss_items as $item ) : ?>
+        <li>
+          <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
+          title="<?php printf( __( 'Posted %s', 'my-text-domain' ), $item->get_date('j F Y | g:i a') ); ?>">
+          <?php echo esc_html( $item->get_title() ); ?>
+          </a>
+        </li>
+      <?php endforeach; ?>
+      </ul>
+    </div>
+  <?php endif; ?>
+        	  	  
 
 		<?php responsive_widgets_end(); // after widgets hook ?>
 	</div><!-- end of #widgets -->
