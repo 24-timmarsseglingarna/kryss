@@ -149,7 +149,7 @@ $responsive_options = responsive_get_options();
 		<!-- end of .copyright -->
 
 		<div class="grid col-300 scroll-top"><a href="#scroll-top" title="<?php esc_attr_e( 'scroll to top', 'responsive' ); ?>"><?php _e( '&uarr;', 'responsive' ); ?></a>
-		<p>Webbplatsen kör Wordpress. Temat "Kryss" är inspirerat av sxk.se , utvecklat av <a href="http://lumano.se/">Lumano</a> och baserat på <a href="http://wordpress.org/themes/responsive" rel="nofollow">Responsive</a> med GNU Public License.</p></div>
+		<p>Webbplatsen kör Wordpress. Temat "Kryss" är inspirerat av sxk.se , utvecklat av <a href="http://lumano.se/">Lumano</a> och baserat på <a href="http://wordpress.org/themes/responsive" rel="nofollow">Responsive</a> med GNU Public License.</p><p><?php wp_loginout(); ?></p></div>
 
 		<div class="grid col-300 fit powered">
 <p><a href="http://www.sxk.se/kontakta-oss"><strong>Kontakta oss&nbsp;</strong></a><br>Svenska Kryssarklubben (Riksföreningen)<br>Box 1189<br>131 27&nbsp; Nacka Strand<br>Tel: 08-448 28 80<br>Fax: 08-448 28 89<br>E-post:&nbsp;<a style="color: rgb(0, 56, 130); line-height: 13px; font-family: Arial; text-decoration: none;" href="mailto:info@sxk.se">info@sxk.se</a></p>			
