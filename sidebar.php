@@ -86,7 +86,11 @@ switch ( $layout ) {
 		<? endif; ?> <!-- is_page? -->
 
 
+
 	  <?php
+	     $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
+        if ( !empty($organizers) && !is_front_page() ) {
+        
 	    if ( is_single() or is_page() ){
         $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
         if ( !empty($organizers) ) {
@@ -137,9 +141,6 @@ switch ( $layout ) {
       </div>
       <?php
     }
-?>
-
-	  <?php
 	    if ( is_single() or is_page() ){
         $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
         if ( !empty($organizers) ) {
@@ -168,10 +169,7 @@ switch ( $layout ) {
           }
         }
       }
-?>
 
-
-	  <?php
 	    if ( is_single() or is_page() ){
         $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
         if ( !empty($organizers) ) {
@@ -204,13 +202,10 @@ switch ( $layout ) {
           }
         }
       }
+    }
+    else
+      if ( dynamic_sidebar( 'main-sidebar' ) );
 ?>
-
-
-
-		<?php if ( dynamic_sidebar( 'main-sidebar' ) ) : ?>
-		<?php endif; //end of main-sidebar ?>
-
 		<?php responsive_widgets_end(); // after widgets hook ?>
 	</div><!-- end of #widgets -->
 <?php responsive_widgets_after(); // after widgets container hook ?>
