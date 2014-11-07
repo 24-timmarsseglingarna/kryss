@@ -1,83 +1,91 @@
 <?php
 
 // Exit if accessed directly
-if( !defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
-
 /**
- * 24 hrs rally sidebar
+ * Main Widget Template
  *
  *
- * @file           sidebar-24.php
- * @package        kryss
- * @author         Stefan Pettersson
- * @copyright      2014 Lumano
+ * @file           sidebar.php
+ * @package        Responsive
+ * @author         Emil Uzelac
+ * @copyright      2003 - 2014 CyberChimps
  * @license        license.txt
  * @version        Release: 1.0
- * @filesource     wp-content/themes/kryss/sidebar-24.php
+ * @filesource     wp-content/themes/responsive/sidebar.php
  * @link           http://codex.wordpress.org/Theme_Development#Widgets_.28sidebar.php.29
- * @since          available since Release 0.2.2
+ * @since          available since Release 1.0
  */
 
 /*
- * If this is a full-width page, exit
+ * Load the correct sidebar according to the page layout
  */
-if( 'full-width-page' == responsive_get_layout() ) {
-	return;
+$layout = responsive_get_layout();
+switch ( $layout ) {
+	case 'sidebar-content-page':
+		get_sidebar( 'left' );
+		return;
+		break;
+
+	case 'content-sidebar-half-page':
+		get_sidebar( 'right-half' );
+		return;
+		break;
+
+	case 'sidebar-content-half-page':
+		get_sidebar( 'left-half' );
+		return;
+		break;
+
+	case 'full-width-page':
+		return;
+		break;
 }
 ?>
 
 <?php responsive_widgets_before(); // above widgets container hook ?>
-
-    
 	<div id="widgets" class="<?php echo implode( ' ', responsive_get_sidebar_classes() ); ?>">
-	  
-	  <?php responsive_widgets(); // above widgets hook ?>
-	  
-	
+		<?php responsive_widgets(); // above widgets hook ?>
+		
 		<?php if ( dynamic_sidebar('kryss_top_right') ) : ?>
 		<? endif; ?>
 
-  <?php if( is_page() ) : ?>
-
-    <?php
-    if ($post->post_parent)	{
-    	$ancestors=get_post_ancestors($post->ID);
-    	$root=count($ancestors)-1;
-    	$parent = $ancestors[$root];
-    } else {
-    	$parent = $post->ID;
-    }
-    ?>
-
-      <!-- Our sub menu, here is. -->
+    <?php if( is_page() ) : ?>
 			<div class="widget-wrapper">
-			  				<div class="widget-title"><h3><? echo get_the_title($parent);  ?></h3></div>
-        <?php
-        
-        if ($post->post_parent)	{
-        	$ancestors=get_post_ancestors($post->ID);
-        	$root=count($ancestors)-1;
-        	$parent = $ancestors[$root];
-        } else {
-        	$parent = $post->ID;
-        }
-        
-        $children = wp_list_pages("title_li=&child_of=". $parent ."&echo=0");
-        
-        if ($children) { ?>
-        <ul id="subnav">
-        <?php echo $children; ?>
-        </ul>
-        <?php } ?>
-			</div><!-- end of .widget-wrapper -->
+				<div class="widget-title">
+				  <h3>
+				    <span>
+				      <?php
+			          $parent_title = get_the_title($post->post_parent);
+			          echo $parent_title;
+		            ?>  
+	          </span>              
+	        </h3>
+	      </div> <!-- /.widget-title -->
+    		<nav class="sidebarMenu">
+    		  
+    			<?php
+    			$children = '';
+    			if($post->post_parent){
+    			  $children .= '<li class="page_item"><a href="'.get_page_link($post->post_parent).'">'.get_the_title($post->post_parent).'</a></li>';
+    				$children .= wp_list_pages("title_li=&child_of=".$post->post_parent."&echo=0");
+    			} else {
+    			  $children .= '<li class="page_item current_page_item"><a href="'.get_page_link($post).'">'.get_the_title($post).'</a></li>';
+    				$children .= wp_list_pages("title_li=&child_of=".$post->ID."&echo=0");
+    			}
+    			if ($children) { ?>
+    				<ul class="submenu">
+    					<?php echo $children; ?>
+    				</ul>
+    			<?php } ?>			
+    		</nav>
+  		</div> <!-- /.widget-wrapper -->
+		<? endif; ?> <!-- is_page? -->
 
-	<?php endif; //end of is_page ?>
 
-  
 	  <?php
 	    if ( is_single() or is_page() ){
         $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
@@ -191,7 +199,6 @@ if( 'full-width-page' == responsive_get_layout() ) {
             if( is_wp_error( $term_link ) )
               continue; ?>
             <a href ="<?php echo $term_link . '?post_type=post' ?>">Alla från <?php echo $organizer->name; ?> ...</a>
-            
             </div>
             <?php
           }
@@ -199,57 +206,10 @@ if( 'full-width-page' == responsive_get_layout() ) {
       }
 ?>
 
-  <?php
-    $organizer_feed = '';
-    $fb_page = 'https://www.facebook.com/svenskakryssarklubben';
-    $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
-    if ( !empty($organizers) ){
-      if ( function_exists('get_all_terms_meta') ) {
-        $metaList = get_all_terms_meta( '26' );
-        if ( !empty( $metaList ) ) { 
-          if ( !empty( $metaList['kryss_organizer_fbpage'][0]) ) {
-            $fb_page = $metaList['kryss_organizer_fbpage'][0];  
-          }
-          if ( !empty( $metaList['kryss_organizer_feed'][0] ) ) {
-            $organizer_feed = $metaList['kryss_organizer_feed'][0];
-          }
-        }
-      }
-    }
-  ?>
 
 
-	<div class="widget-wrapper">
-    <div class="fb-like-box" data-href="<?php echo $fb_page; ?>" data-width="300" data-height="400" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
-  </div>
-
-  <?php 
-    if( !empty( $organizer_feed ))  {
-      include_once( ABSPATH . WPINC . '/feed.php' );    
-      $rss = fetch_feed( $organizer_feed );
-      if ( ! is_wp_error( $rss ) ) { 
-        $maxitems = $rss->get_item_quantity( 7 ); 
-        $rss_items = $rss->get_items( 0, $maxitems );
-        }
-      }
-  ?>
-      
-  <?php if ( $maxitems > 0 ) : ?>
-    <div class="widget-wrapper">
-      <div class="widget-title"><h3>Från <?php echo $organizer->name; ?></h3></div>
-      <ul>
-      <?php foreach ( $rss_items as $item ) : ?>
-        <li>
-          <a href="<?php echo esc_url( $item->get_permalink() ); ?>"
-          title="<?php printf( __( 'Posted %s', 'my-text-domain' ), $item->get_date('j F Y | g:i a') ); ?>">
-          <?php echo esc_html( $item->get_title() ); ?>
-          </a>
-        </li>
-      <?php endforeach; ?>
-      </ul>
-    </div>
-  <?php endif; ?>
-        	  	  
+		<?php if ( dynamic_sidebar( 'main-sidebar' ) ) : ?>
+		<?php endif; //end of main-sidebar ?>
 
 		<?php responsive_widgets_end(); // after widgets hook ?>
 	</div><!-- end of #widgets -->
