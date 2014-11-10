@@ -209,6 +209,7 @@ p strong a {
   -webkit-border-radius: 0px;
   border: none;
   border-radius: 0px;
+  filter: none;
 }
 
 #comments {
@@ -238,6 +239,7 @@ a.button, input[type='reset'], input[type='button'], input[type='submit'] {
   background: -o-linear-gradient(top,  #3666a4 0%,#003882 100%); /* Opera 11.10+ */
   background: -ms-linear-gradient(top,  #3666a4 0%,#003882 100%); /* IE10+ */
   background: linear-gradient(to bottom,  #3666a4 0%,#003882 100%); /* W3C */
+  	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#3666a4, endColorstr=#003882);
 }
 
 .menu, .menu ul {
@@ -246,9 +248,8 @@ a.button, input[type='reset'], input[type='button'], input[type='submit'] {
 
 .menu {
   background-color: #fff;
-  background-image:none;
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#ffffff);
-  
+  background-image: none;
+	filter: none;
   margin-bottom: 1.5em;
   margin-right: 1em;
 }
