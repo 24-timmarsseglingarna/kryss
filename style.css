@@ -247,8 +247,10 @@ a.button, input[type='reset'], input[type='button'], input[type='submit'] {
 .menu {
   background-color: #fff;
   background-image:none;
- margin-bottom: 1.5em;
- margin-right: 1em;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#ffffff, endColorstr=#ffffff);
+  
+  margin-bottom: 1.5em;
+  margin-right: 1em;
 }
 
 .menu a {
@@ -269,8 +271,8 @@ a.button, input[type='reset'], input[type='button'], input[type='submit'] {
 }
 
 .sub-menu .current_page_item a, .sub-menu .current-menu-item a, .menu li li a  {
-background-color: #fff;
-border-bottom: solid 0.33em #fff;
+  background-color: #fff;
+  border-bottom: solid 0.33em #fff;
 }
 
 
@@ -286,7 +288,7 @@ border-bottom: solid 0.33em #fff;
 	background-color: #fff;
 	background-image: none;
 	color: #000;
-        border-bottom: solid 0.33em #000;
+  border-bottom: solid 0.33em #000;
 }
 
 ul.menu > li:hover {
