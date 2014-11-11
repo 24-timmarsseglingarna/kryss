@@ -290,7 +290,9 @@ a.button, input[type='reset'], input[type='button'], input[type='submit'] {
 	background-image: none;
 	color: #000;
   border-bottom: solid 0.33em #000;
+  background-image: -ms-linear-gradient(top, #ff0, #00f);
   filter: none;
+
 }
 
 
@@ -299,6 +301,9 @@ ul.menu > li:hover {
 	color: #000;
 }
 
+.ie7 .menu ul {
+	background-image: none;
+}
 
 .js .main-nav #responsive_current_menu_item {
   margin-top: 1em;
