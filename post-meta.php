@@ -36,7 +36,10 @@ if( !defined( 'ABSPATH' ) ) {
 <div class="post-meta">
   <div class="fb-like" data-href="<?php echo get_permalink();
  ?>" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-	<?php responsive_post_meta_data(); ?>
+ 
+  <?php if(( get_post_type( $post ) == 'post' )): ?>
+	  <?php  responsive_post_meta_data();?>
+	<?php endif; ?>
 
 	<?php if( comments_open() ) : ?>
 		<span class="comments-link">
