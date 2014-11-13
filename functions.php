@@ -87,7 +87,7 @@ function create_kryss_race_tax() {
 function kryss_widgets_init() {
 
 	register_sidebar( array(
-		'name' => 'Högst till höger',
+		'name' => 'Högst i högerkolumnen',
 		'id' => 'kryss_top_right',		
 		'before_widget' => '<div class="widget-wrapper">',
 		'after_widget' => '</div>',
@@ -116,11 +116,18 @@ function m_explode(array $array,$key = ''){
       
 function remove_some_widgets(){
 
-	// Unregister some of the TwentyTen sidebars
+	// Unregister some of the Responsive sidebars
 	unregister_sidebar( 'right-sidebar-half' );
 	unregister_sidebar( 'left-sidebar' );
 	unregister_sidebar( 'left-sidebar-half' );
 	unregister_sidebar( 'right-left' );
+	unregister_sidebar( 'colophon-widget' );
+	unregister_sidebar( 'gallery-widget' );
+	unregister_sidebar( 'home-widget-3' );
+	unregister_sidebar( 'home-widget-2' );
+	unregister_sidebar( 'home-widget-1' );
+	unregister_sidebar( 'right-sidebar' );
+
 }
 add_action( 'widgets_init', 'remove_some_widgets', 11 );      
 
