@@ -65,22 +65,29 @@ switch ( $layout ) {
 	          </span>              
 	        </h3>
 	      </div> <!-- /.widget-title -->
-    		<nav class="sidebarMenu">
+	      
+    		<nav class="kryss-menu">
+    		  <ol>
+    		    <?php if($post->post_parent) {
+    		      echo '<li class="page_item current_page_ancestor"><a href="'.get_page_link($post->post_parent).'">'.get_the_title($post->post_parent).'</a></li>';
+    		      }
+    		    else {
+      		    echo '<li class="page_item current_page_item"><a href="'.get_page_link($post).'">'.get_the_title($post).'</a></li>';
+      		    }
+    		    ?> 
     			<?php
-    			$children = '';
     			if($post->post_parent){
-    			  $children .= '<li class="page_item"><a href="'.get_page_link($post->post_parent).'">'.get_the_title($post->post_parent).'</a></li>';
-    				$children .= wp_list_pages("title_li=&child_of=".$post->post_parent."&echo=0");
+    				$children = wp_list_pages("title_li=&child_of=".$post->post_parent."&echo=0");
     			} else {
-    			  $children .= '<li class="page_item current_page_item"><a href="'.get_page_link($post).'">'.get_the_title($post).'</a></li>';
-    				$children .= wp_list_pages("title_li=&child_of=".$post->ID."&echo=0");
+    				$children = wp_list_pages("title_li=&child_of=".$post->ID."&echo=0");
     			}
     			if ($children) { ?>
-    				<ul class="submenu">
+    				<ol>
     					<?php echo $children; ?>
-    				</ul>
-    			<?php } ?>		    				
-    		</nav>
+    				</ol>
+    			<?php } ?>	
+    			</ol> 	    				
+    		</nav> 
   		</div> <!-- /.widget-wrapper -->
   		
 	  <?php

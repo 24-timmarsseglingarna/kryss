@@ -279,6 +279,7 @@ input[type='submit'] {
   margin-right: 1em;
 }
 
+
 .menu a {
   border-left: none;
   color: #000;
@@ -291,20 +292,6 @@ input[type='submit'] {
   white-space: nowrap;
   border-bottom: solid 0.33em #fff;
 }
-
-.menu .current_page_item a, 
-.menu .current-menu-item a  {
-  background-color: #fff;
-  border-bottom: solid 0.33em #000;
-}
-
-.sub-menu .current_page_item a, 
-.sub-menu .current-menu-item a, 
-.menu li li a  {
-  background-color: #fff;
-  border-bottom: solid 0.33em #fff;
-}
-
 
 .current-page-ancestor a,
 .current_page_item a {
@@ -319,6 +306,24 @@ input[type='submit'] {
 .top-menu a:hover {
   border-bottom: solid 0.2em #000; 
 }
+
+.menu .current_page_item a, 
+.menu .current-menu-item a,  
+.menu .current-page-ancestor a
+{
+  background-color: #fff;
+  border-bottom: solid 0.33em #000;
+}
+
+.sub-menu .current_page_item a, 
+.sub-menu .current-menu-item a, 
+.menu li li a  {
+  background-color: #fff;
+  border-bottom: solid 0.33em #fff;
+}
+
+
+
 
 #subnav .current_page_item a
 {
@@ -348,6 +353,46 @@ ul.menu > li:hover {
 	color: #000;
 }
 
+.kryss-menu {
+  padding-left: 0px;
+  margin-left: 0px;
+}
+
+
+.kryss-menu ol {
+  list-style-type: none;
+  padding-left: 0px !important;
+  line-height: 1.33em;
+}
+
+.kryss-menu ol ol {
+  padding-left: 1em !important;
+  line-height: 1.33em;
+}
+
+.kryss-menu ol li {
+  margin-bottom: 0.2em;
+}
+
+.kryss-menu a {
+  text-decoration: none !important;
+  color: #000 !important;
+}
+
+.kryss-menu li a {
+  border-bottom: solid 0.2em #f9f9f9;
+}
+
+.kryss-menu .current_page_ancestor a,
+.kryss-menu .current_page_item a,
+.kryss-menu li a:hover {
+  border-bottom: solid 0.2em #000;
+}
+
+
+.kryss-menu li:hover {
+  background-color: #eee;
+}
 
 .ie7 .menu ul {
 	background-image: none;
