@@ -48,12 +48,12 @@ switch ( $layout ) {
 
 <?php responsive_widgets_before(); // above widgets container hook ?>
 	<div id="widgets" class="<?php echo implode( ' ', responsive_get_sidebar_classes() ); ?>">
-		<?php responsive_widgets(); // above widgets hook ?>
-		
-		<?php if ( dynamic_sidebar('kryss_top_right') ) : ?>
-		<? endif; ?>
 
-    <?php if( is_page() ) : ?>
+		<?php if ( !dynamic_sidebar( 'kryss_top_right' ) ) : ?>
+		<?php endif; //end of kryss-top-sidebar ?>
+
+		
+		<?php if( is_page() ) : ?>
 			<div class="widget-wrapper">
 				<div class="widget-title">
 				  <h3>
@@ -66,7 +66,6 @@ switch ( $layout ) {
 	        </h3>
 	      </div> <!-- /.widget-title -->
     		<nav class="sidebarMenu">
-    		  
     			<?php
     			$children = '';
     			if($post->post_parent){
@@ -80,13 +79,10 @@ switch ( $layout ) {
     				<ul class="submenu">
     					<?php echo $children; ?>
     				</ul>
-    			<?php } ?>			
+    			<?php } ?>		    				
     		</nav>
   		</div> <!-- /.widget-wrapper -->
-		<? endif; ?> <!-- is_page? -->
-
-
-
+  		
 	  <?php
 	     $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
         if ( !empty($organizers) && !is_front_page() ) {
@@ -204,8 +200,12 @@ switch ( $layout ) {
       }
     }
     else
-      if ( dynamic_sidebar( 'main-sidebar' ) );
 ?>
+  		
+  		
+		<?php endif ?> <!-- is_page? -->
+		<?php if ( !dynamic_sidebar( 'main-sidebar' ) ) : ?>
+		<?php endif; //end of main-sidebar ?>
 		<?php responsive_widgets_end(); // after widgets hook ?>
 	</div><!-- end of #widgets -->
 <?php responsive_widgets_after(); // after widgets container hook ?>

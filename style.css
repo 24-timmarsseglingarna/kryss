@@ -16,6 +16,7 @@
 
 body {
   background-color: #d0e6f3;
+  color: #000;
 }
 
 
@@ -23,7 +24,7 @@ body {
 #wrapper h1 a, #wrapper h1 a:link, #wrapper h1 a:visited,  #wrapper h1 a:hover, #wrapper h1 a:active,
 #wrapper h2 a, #wrapper h2 a:link, #wrapper h2 a:visited,  #wrapper h2 a:hover, #wrapper h2 a:active ,
 #wrapper h3 a, #wrapper h3 a:link, #wrapper h3 a:visited,  #wrapper h3 a:hover, #wrapper h3 a:active {
-  color: #555;
+  color: #000;
   text-decoration: none;
 }
 
