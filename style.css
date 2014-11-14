@@ -245,7 +245,9 @@ p strong a {
   margin-top: 0px;
 }
 
- 
+.more_in_list {
+  padding-left: 1.5em !important;
+}
 
 a.button, 
 input[type='reset'], 

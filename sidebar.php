@@ -52,8 +52,7 @@ switch ( $layout ) {
 		<?php if ( !dynamic_sidebar( 'kryss_top_right' ) ) : ?>
 		<?php endif; //end of kryss-top-sidebar ?>
 
-		
-		<?php if( is_page() ) : ?>
+		<?php if( is_page() ) : ?> <!-- If page then sidebar menu -->
 			<div class="widget-wrapper">
 				<div class="widget-title">
 				  <h3>
@@ -89,11 +88,14 @@ switch ( $layout ) {
     			</ol> 	    				
     		</nav> 
   		</div> <!-- /.widget-wrapper -->
+		<?php endif ?> <!-- is_page? -->
+		
+
   		
 	  <?php
 	     $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
         if ( !empty($organizers) && !is_front_page() ) {
-        
+    
 	    if ( is_single() or is_page() ){
         $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
         if ( !empty($organizers) ) {
@@ -116,7 +118,7 @@ switch ( $layout ) {
             }
             ?>
             </ul>
-            <a href ="<?php echo get_post_type_archive_link('kryss_race') . '?kryss_organizer_tax=' . $organizer->slug; ?>">Alla i <?php echo $organizer->name; ?> ...</a>
+            <a class="more_in_list" href ="<?php echo get_post_type_archive_link('kryss_race') . '?kryss_organizer_tax=' . $organizer->slug; ?>">Alla i <?php echo $organizer->name; ?> ...</a>
             </div>
             <?php
           }
@@ -210,7 +212,6 @@ switch ( $layout ) {
 ?>
   		
   		
-		<?php endif ?> <!-- is_page? -->
 		<?php if ( !dynamic_sidebar( 'main-sidebar' ) ) : ?>
 		<?php endif; //end of main-sidebar ?>
 		<?php responsive_widgets_end(); // after widgets hook ?>
