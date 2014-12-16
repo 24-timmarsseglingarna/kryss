@@ -131,6 +131,12 @@ function remove_some_widgets(){
 }
 add_action( 'widgets_init', 'remove_some_widgets', 11 );      
 
+function disable_self_trackback( &$links ) {
+  foreach ( $links as $l => $link )
+        if ( 0 === strpos( $link, get_option( 'home' ) ) )
+            unset($links[$l]);
+}
 
+add_action( 'pre_ping', 'disable_self_trackback' );
 
 ?>
