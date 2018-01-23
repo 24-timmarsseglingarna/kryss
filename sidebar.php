@@ -146,36 +146,9 @@ switch ( $layout ) {
       </div>
       <?php
     }
-	    if ( is_single() or is_page() ){
-        $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
-        if ( !empty($organizers) ) {
-          foreach( $organizers as $organizer) { 
-           	echo '<div class="widget-wrapper">';
-  		      echo '<div class="widget-title"><h3>Resultat från ' .  $organizer->name . '</h3></div>';
-  		      echo '<ul>';
-            $args = array(
-            	'post_type' => 'kryss_result',
-              'kryss_organizer_tax' => $organizer->slug,
-              'posts_per_page' => 5
-            );
-            $the_query = new WP_Query( $args ); 
-            if ( $the_query->have_posts() ) {
-              while ( $the_query->have_posts() ) : $the_query->the_post(); ?>
-                <li><a href=" <?php the_permalink(); ?> "><?php the_title(); ?></a></li> 
-              <?php
-              endwhile;  
-              wp_reset_postdata();
-            }
-            ?>
-            </ul>
-            <a href ="<?php echo get_post_type_archive_link('kryss_result') . '?kryss_organizer_tax=' . $organizer->slug; ?>">Alla i <?php echo $organizer->name; ?> ...</a>
-            </div>
-            <?php
-          }
-        }
-      }
+	
 
-	    if ( is_single() or is_page() ){
+	if ( is_single() or is_page() ){
         $organizers = get_the_terms($post->id, 'kryss_organizer_tax');
         if ( !empty($organizers) ) {
           foreach( $organizers as $organizer) { 
